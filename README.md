@@ -1,4 +1,4 @@
-# Laporan Proyek Machine Learning - Nabila Alawiyah
+# Laporan Proyek Machine Learning - Adam Firmansyah
 
 ## Domain Proyek
 
@@ -89,7 +89,7 @@ Melakukan Univariate Analysis untuk numerical dan categorical features.
 - Categorical Feature pada dataset ini terdiri atas ['gender','cholesterol', 'gluc', 'smoke', 'alco', 'active', 'cardio']
 
 <p align="center">
-  <img src="" width="1000"/>
+  <img src="https://github.com/user-attachments/assets/79426f7f-03e3-460c-aaa6-2ed8e34355c7" width="1000"/>
 </p>
 
 Gambar di atas dapat diinterpretasikan sebagai berikut.
@@ -122,7 +122,7 @@ Melakukan Multivariate Analysis untuk menganalisis hubungan antar variabel
 #### 1. Mengetahui distribusi Umur terhadap Risiko Penyakit
 
 <p align="center">
-  <img src="" width="600"/>
+  <img src="https://github.com/user-attachments/assets/32db376d-11b8-46e1-a06e-ac74cb6056d3" width="600"/>
 </p>
 
 Insight:
@@ -134,7 +134,7 @@ Insight:
 #### 2. Mengetahui distribusi Tekanan Darah Terhadap Risiko Penyakit (Cardio)
 
 <p align="center">
-  <img src="" width="600"/>
+  <img src="https://github.com/user-attachments/assets/29de156f-7c67-45b7-9f3d-1c9cb9a4fa81" width="600"/>
 </p>
 
 Insight:
@@ -143,7 +143,7 @@ Pasien dengan penyakit kardiovaskular cenderung memiliki tekanan darah yang lebi
 #### 3. Mengetahui BMI (Body Mass Index) vs Risiko Penyakit
 
 <p align="center">
-  <img src="" width="1000"/>
+  <img src="https://github.com/user-attachments/assets/d6a5f287-0383-4524-bf2c-821c397ed7af" width="1000"/>
 </p>
 
 Insight:
@@ -155,7 +155,7 @@ Insight:
 #### 4. Mengetahui fitur Lifestyle (Smoke, Alcohol, Active) terhadap Risiko
 
 <p align="center">
-  <img src="" width="1000"/>
+  <img src="https://github.com/user-attachments/assets/a485f71f-b84d-4e1d-82b1-ad7288b581ba" width="1000"/>
 </p>
 
 Insight:
@@ -168,340 +168,422 @@ Insight:
 
 #### Memeriksa data duplikat
 
-##### 1. Menghitung jumlah data duplikat
-
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/091b34fa-5d68-4769-82cc-457ce857027d" width="300"/>
+  <img src="https://github.com/user-attachments/assets/80d4de62-3c92-4139-8d7d-815ed01e3b55" width="300"/>
 </p>
-
-> Berdasarkan program di atas, maka diketahui bahwa terdapat 24 data duplikat.
+> Berdasarkan program di atas, maka diketahui tidak terdapat data duplikat. Oleh karena itu tidak perlu di drop data pada bagian data cleaning
 
 #### Memeriksa data missing value
 
-##### 1. Menampilkan data missing value
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/f9307676-d648-431d-9aa8-2eafe4eb8d05" width="300"/>
+</p>
+> Berdasarkan program di atas, maka diketahui tidak terdapat missing values. Oleh karena itu tidak perlu di drop data pada bagian data cleaning
+
+#### Memeriksa Outlier
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/f5331f7b-9246-48b7-8871-c5d544ee6bd4" width="300"/>
+  <img src="https://github.com/user-attachments/assets/07f83da4-0f0a-4cc1-af7b-23be480689d4" width="300"/>
 </p>
-
-> Berdasarkan output sebelumnya, tidak ditemukan nilai missing pada dataset df_filtered. Namun, penting untuk memeriksa keberadaan nilai nol pada setiap kolom, karena pada fitur seperti Gender, Weight, Height, CH2O, dan FCVC, nilai 0 tidak logis secara medis maupun perilaku konsumsi. Selain itu, perlu memeriksa nilai nan atau NaN pada kolom kategorikal. Nilai nol dan nan yang secara tidak sengaja dianggap valid dapat menjadi representasi nilai yang hilang (missing) dan berisiko menurunkan performa model machine learning yang dibangun.
-
-##### 2. Memeriksa apakah ada data umur, tinggi dan berat badan yang bernilai 0.
-
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/57fc6c2a-0fe3-4c1c-a1c1-29cbdb570930" width="300"/>
+  <img src="https://github.com/user-attachments/assets/bd498cba-e7e3-44b3-9b9d-fc665dd67ac7" width="300"/>
 </p>
-
-> Setelah dicek, tidak ada data dari umur, tinggi dan berat badan yang bernilai 0.
-
-#### Memeriksa Outliers dengan IQR Method
-
-##### 1. Menampilkan analisis statistik
-
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/80627d43-7d0e-428e-946d-517bc24d2676" width="1000"/>
+  <img src="https://github.com/user-attachments/assets/094c4d91-2a65-4dbb-8e97-8f9a3cce9c8b" width="300"/>
 </p>
-
-> Fungsi `describe()` memberikan informasi statistik pada masing-masing kolom, antara lain:
->
-> - `Count` adalah jumlah sampel pada data.
-> - `Mean` adalah nilai rata-rata.
-> - `Std` adalah standar deviasi.
-> - `Min` yaitu nilai minimum setiap kolom.
-> - `25%` adalah kuartil pertama. Kuartil adalah nilai yang menandai batas interval dalam empat bagian sebaran yang sama.
-> - `50%` adalah kuartil kedua, atau biasa juga disebut median (nilai tengah). -` 75%` adalah kuartil ketiga.
-> - `Max` adalah nilai maksimum.
-
-##### 2. Mengecek data outlier dan memvisualisasikannya
-
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/f28dc028-f949-4a82-ba0c-79664d3db88d" width="1000"/>
+  <img src="https://github.com/user-attachments/assets/c5802446-1461-4cbb-8210-92f12c94f883" width="300"/>
 </p>
 
-> Program di atas akan menampilkan hasil visualisasi sebagai berikut:
+Insight :
 
+1. Pada variabel Umur, terlihat bahwa sebagian besar responden berada dalam rentang usia 48 hingga 58 tahun. Ditemukan dua data pencilan (outlier) pada usia sekitar 30 tahun ke atas. Namun, data ini tetap dipertahankan karena secara logis masih memungkinkan seseorang berusia di atas 30 tahun mengalami kondisi yang diteliti.
+
+2. Untuk variabel Weight, mayoritas responden memiliki berat badan antara 60 hingga 80 kilogram. Terdapat sejumlah outlier, terutama pada rentang berat 20 hingga 35 kg. Karena nilai tersebut tergolong tidak wajar untuk individu berusia di atas 35 tahun, maka data pencilan ini akan ditindaklanjuti.
+
+3. Pada variabel Height, sebagian besar responden memiliki tinggi badan antara 1,6 hingga 1,7 meter. Meskipun terdapat banyak outlier, data dengan tinggi badan ekstrem seperti 0,5 hingga 1 meter dianggap tidak realistis untuk usia di atas 30 tahun, sehingga akan ditangani lebih lanjut.
+
+4. Pada variabel ap_hi, ditemukan cukup banyak outlier. Data dengan nilai tekanan darah melebihi 500 mmHg atau bernilai negatif dinilai tidak masuk akal secara medis dan akan dihapus dari analisis.
+
+5. Demikian pula, variabel ap_lo menunjukkan adanya outlier dengan nilai ekstrem yang tidak logis secara medis, seperti lebih dari 500 mmHg atau nilai negatif. Oleh karena itu, data tersebut juga akan dihapus.
+
+6. Terdapat dua outlier di sisi kiri (sekitar usia 29–30 tahun). Meskipun demikian, usia ini masih tergolong realistis, terutama jika penelitian ini tidak membatasi usia minimum responden.
+
+7. Terdapat jumlah outlier yang sangat banyak, bahkan mencapai nilai di atas 300, yang secara medis tidak mungkin terjadi. Outlier ekstrem ini menunjukkan adanya anomali data, kemungkinan besar akibat kesalahan input atau pencatatan data.
+
+#### Memeriksa Data yang memiliki nilai 0 pada kolom
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/23a7f903-4084-4591-b1c0-19a6cdc0bad2" width="1000"/>
+  <img src="https://github.com/user-attachments/assets/1dcb921d-649b-46c7-8522-387ca2d6c152" width="300"/>
 </p>
-
-> **Berikut adalah interpretasi dari boxplot di atas.**
->
-> - Pada kolom Age, mayoritas responden berusia antara 20 hingga 25 tahun. Terdapat sejumlah responden dengan usia di atas 35 tahun, namun nilai tersebut masih wajar secara biologis dan tidak akan dihapus dari dataset.
-> - Pada kolom `Weight`, dapat dilihat bahwa mayoritas responden memiliki berat badan di rentang 60-100 kilogram. Terdapat satu outlier, yaitu memiliki berat badan 173 kg. Meski demikian, outlier ini tidak akan dihapus karena sangat memungkinkan seseorang obesitas memiliki berat badan ekstrem.
-> - Pada kolom `Height`, dapat dilihat bahwa mayoritas responden memiliki tinggi badan di rentang 1,6-1,7 meter. Terdapat satu outlier, yaitu memiliki tinggi badan hampir 2 meter. Meski demikian, outlier ini tidak akan dihapus karena sangat memungkinkan seseorang memiliki tinggi badan tersebut.
-> - Pada kolom `NCP`, mayoritas responden makan sebanyak 3 kali sehari. Terdapat variasi jumlah makan dari 1 hingga 4 kali per hari. Nilai-nilai ini masih dianggap wajar karena dapat mencerminkan pola makan individu seperti diet tertentu atau program peningkatan massa otot.
-> - Pada kolom `CH2O`, dapat dilihat bahwa tidak ada outlier. Rata-rata responden minum air sebanyak 1,5-2,5 liter air.
-> - Pada kolom-kolom lainnya seperti `FCVC`, `FAF`, dan `TUE`, persebaran data terlihat relatif normal dan tidak menunjukkan nilai ekstrem yang mencolok berdasarkan statistik deskriptif.
->
-> **Kesimpulan:**
-> Dari hasil analisis statistik deskriptif, dapat disimpulkan bahwa beberapa fitur seperti Age, Weight, Height, dan NCP menunjukkan keberadaan nilai yang tergolong ekstrem namun masih valid secara biologis dan kontekstual. Oleh karena itu, nilai-nilai tersebut tidak dihapus dari dataset karena tetap relevan untuk analisis obesitas. Sementara itu, fitur lain seperti CH2O, FAF, dan TUE menunjukkan distribusi data yang relatif normal tanpa adanya nilai yang mencolok sebagai outlier.
+Insight :
+terdapat nilai 0 pada kolom ap_lo maka sebanyak 21
 
 ## Data Preparation
 
 ### Data Cleaning
 
-#### Menangani Data Duplikat
-
-##### 1. Menampilkan baris data yang duplikat
-
+#### Menghapus Kolom Tidak Relevan
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/afd8eed2-7105-4cce-b8a8-0f0f5bf9e561" width="1000"/>
+  <img src="https://github.com/user-attachments/assets/6de8abba-36cf-4f16-9466-4757188c72d1](https://github.com/user-attachments/assets/2154e7e0-48a6-4d39-a380-d1d6b1b9df48" width="1000"/>
 </p>
-  
-  > Dari hasil di atas, terlihat bahwa ada data-data tersebut memang terduplikasi. Oleh karena itu, data duplikat ini akan dihapus.
+> Program di atas digunakan untuk menghapus kolom yang tidak relevan atau tidak digunakan.
 
-##### 2. Menghapus baris data yang duplikat
-
+#### Menghapus baris yang terdapat nilai 0 pada masing masing kolom
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/ffda9ec5-f11e-4c8d-b365-1d57fc476151" width="300"/>
+  <img src="https://github.com/user-attachments/assets/6de8abba-36cf-4f16-9466-4757188c72d1](https://github.com/user-attachments/assets/2154e7e0-48a6-4d39-a380-d1d6b1b9df48](https://github.com/user-attachments/assets/3f6b806e-1ac1-4d6f-9589-12936a390dca" width="1000"/>
 </p>
-  
-  > Setelah program di atas dijalankan, maka sudah tidak ada lagi data yang duplikat.
+> Program di atas digunakan untuk menghapus baris yang terdapat nilai 0 pada masing masing kolom.
 
-#### Menangani Missing Value
-
-##### 1. Menangani nilai nan pada data kategorikal feature
-
+#### Menangani Outlier
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/6de8abba-36cf-4f16-9466-4757188c72d1" width="1000"/>
+  <img src="https://github.com/user-attachments/assets/83f6c47e-161a-4e60-8f94-e0df73936caa" width="1000"/>
 </p>
+> Program di atas digunakan untuk menangani outlier.
 
-> Program di atas digunakan untuk mengganti nilai yang dianggap missing tapi bukan np.nan menjadi np.nan, lalu menghapusnya dengan program berikut.
-
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/f36df395-3f34-4b92-8b99-1a437d04cddc" width="300"/>
-</p>
-
-### Encoding Categorical
-
-Encoding Kategorikal dilakukan terhadap variabel yang hanya berisi antara `yes` (iya) dan `no` (tidak), yaitu pada variable:
-
-- `FAVC` (Apakah sering mengonsumsi makanan berkalori tinggi?),
-- `SCC` (Apakah memantau jumlah kalori yang dikonsumsi setiap hari?),
-- `SMOKE` (Apakah merokok?),
-- `family_history_with_overweight` (Apakah ada anggota keluarga yang menderita atau pernah menderita kelebihan berat badan?)
-Berikut adalah program untuk melakukan encoding categorical.
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/157877a4-2663-4520-9c33-f0e06d66f473" width="800"/>
-</p>
-
-### One Hot Encoding
-
-One Hot Encoding dilakukan terhadap 4 variabel, yaitu
-
-- Gender – Male, Female
-- CALC – no, Sometimes, Frequently
-- CAEC – no, Sometimes, Frequently, dll
-- MTRANS – Public_Transportation, Walking, Automobile, Bike, Motorbike (atau lainnya)
-karena kategori-kategori pada variabel tersebut memiliki urutan tertentu.
-Berikut adalah program untuk melakukan one hot encoding.
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/84d79ee1-7611-407f-a01a-b0d4c87dd8a3" width="800"/>
-</p>
-
-### Dataset akhir yang sudah melalui tahap data preparation
-
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/a6696e54-76eb-4b6c-8fb6-7fcb6b10136a" width="1000"/>
-</p>
 
 ### Data Splitting
 
-Target pada dataset ini adalah variabel `NObeyesdad` untuk mengetahui akurasi prediksi dari NObeyesdad, maka akan menghapus kolom tersebut dari data dan assign kolom tersebut ke variabel baru. Selanjutnya, melakukan split data dengan skema data training sebesar 80% untuk melatih model dan 20% untuk menguji model.
+Target pada dataset ini adalah variabel `cardio` untuk mengetahui akurasi prediksi dari cardio, maka akan menghapus kolom tersebut dari data dan assign kolom tersebut ke variabel baru. Selanjutnya, melakukan split data dengan skema data training sebesar 80% untuk melatih model dan 20% untuk menguji model.
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/08875066-dc77-4c86-bd28-58c6a5b991f0" width="1000"/>
+  <img src="https://github.com/user-attachments/assets/1b5c4da3-fdb1-4fc3-9b34-ad7b0e2d3499" width="1000"/>
 </p>
 
-### Normalisasi
+### Standarisasi
 
-Algoritma machine learning memiliki performa lebih baik dan konvergen lebih cepat ketika dimodelkan pada data dengan skala relatif sama atau mendekati distribusi normal. Proses scaling dan normalisasi membantu untuk membuat fitur data menjadi bentuk yang lebih mudah diolah oleh algoritma dengan range 0 hingga 1 dan menyeragamkan karena memiliki satuan yang berbeda pada tiap fitur.
+Standarisasi merupakan proses transformasi data agar setiap fitur memiliki skala yang seragam, umumnya dengan distribusi rata-rata 0 dan standar deviasi 1. Proses ini sangat penting dalam machine learning karena:
 
-#### 1. Melakukan normalisasi pada data training
+- Algoritma seperti Gradient Boosting, Logistic Regression, dan k-NN bekerja lebih optimal ketika input berada pada skala yang sebanding.
+- Menghindari dominasi fitur dengan nilai numerik besar terhadap fitur lain yang bernilai kecil.
+- Mempercepat proses konvergensi dan meningkatkan stabilitas model selama pelatihan.
+- Pada proyek ini, standarisasi diterapkan pada fitur numerik seperti height, weight, ap_hi, ap_lo, umur, dan BMI untuk menyamakan skala antar fitur, sehingga model dapat belajar dari data secara adil dan efisien tanpa bias terhadap fitur tertentu.
+
+#### 1. Scaling untuk data training
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/75a7f387-1077-4186-8e3f-c57eb71185fc" width="1000"/>
+  <img src="https://github.com/user-attachments/assets/ce9684d2-ce7d-43ca-bd0e-77228cc13737" width="1000"/>
 </p>
 
-#### 2. Melakukan normalisasi pada data testing
+#### 2. Scaling untuk data testing
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/3096de0b-90b1-425d-a0e5-d2ff10125f25" width="1000"/>
+  <img src="https://github.com/user-attachments/assets/4d649f8e-4d98-496b-984e-a428740c8c90" width="1000"/>
 </p>
 
 ## Modeling
+---
 
-### 1. Algoritma XGBoost
+### 1. Algoritma Logistic Regression
 
-XGBoost (Extreme Gradient Boosting) adalah algoritma machine learning berbasis teknik gradient boosting yang sangat populer dan efisien untuk masalah klasifikasi dan regresi. Inti dari XGBoost adalah membangun model secara bertahap dengan cara menggabungkan banyak decision tree secara berurutan, di mana setiap pohon baru bertujuan untuk memperbaiki kesalahan (residual error) yang dihasilkan oleh model sebelumnya. Dalam model ini, parameter yang digunakan adalah:
+Logistic Regression adalah algoritma supervised learning yang sering digunakan untuk masalah klasifikasi biner. Algoritma ini memodelkan probabilitas kelas target menggunakan fungsi logistik (sigmoid) yang menghasilkan output antara 0 dan 1. Model ini bekerja dengan mencari koefisien yang memaksimalkan likelihood data training.
 
-- max_depth = 3. Menentukan kedalaman maksimum dari setiap pohon keputusan. Pohon dengan kedalaman lebih dalam dapat menangkap pola yang lebih kompleks, tapi juga berisiko menyebabkan overfitting. Dengan max_depth=5, model dibatasi agar setiap pohon tidak terlalu dalam sehingga lebih general.
-- learning_rate = 0.09828366951253616 Mengatur besar langkah (step size) setiap pohon baru saat memperbarui model. Learning rate kecil berarti model belajar secara perlahan, mengurangi risiko overfitting, namun memerlukan lebih banyak pohon (n_estimators). Sebaliknya, learning rate besar mempercepat pembelajaran tapi risiko overfitting meningkat.
-- n_estimators = 165. Jumlah total pohon keputusan yang akan dibangun. Semakin banyak pohon, semakin kompleks model dan biasanya akurasi meningkat, tapi waktu komputasi juga lebih lama.
-- random_state = 9. Mengatur seed untuk pengacakan sehingga hasil pelatihan bisa direproduksi (konsisten) saat dijalankan ulang.
-- n_jobs = -1. Mengatur berapa banyak core CPU yang digunakan saat pelatihan. Nilai -1 artinya menggunakan seluruh core yang tersedia untuk mempercepat proses training.
-  Hasil akurasi model XGBoost adalah 98.8%
+Parameter yang digunakan:
 
-### 2. Algoritma SVM
+* **penalty = 'l2'**. Jenis regularisasi untuk mencegah overfitting dengan menambahkan penalti terhadap koefisien model. L2 adalah regularisasi Ridge yang umum digunakan.
+* **C = 1.0**. Parameter invers regulasi yang mengatur kekuatan regularisasi. Nilai kecil berarti regularisasi kuat, dan sebaliknya.
+* **solver = 'lbfgs'**. Algoritma optimisasi untuk memaksimalkan likelihood, cocok untuk dataset kecil hingga menengah.
+* **random\_state = 0**. Menjamin hasil yang konsisten pada pelatihan ulang.
 
-Support Vector Machine (SVM) adalah algoritma supervised learning yang populer untuk klasifikasi dan regresi. Tujuan utama SVM adalah mencari sebuah hyperplane (garis atau bidang pemisah) terbaik yang dapat memisahkan kelas-kelas data dengan margin terbesar. Margin ini adalah jarak terdekat antara hyperplane dengan titik data dari masing-masing kelas. Dalam model ini, parameter yang digunakan adalah:
+Hasil akurasi model Logistic Regression adalah **67%**.
 
-- kernel='rbf'. Menentukan tipe kernel yang digunakan, di sini adalah Radial Basis Function yang memungkinkan model membentuk batas pemisah non-linear yang fleksibel.
-- random_state=42. Menetapkan seed untuk pengacakan internal agar proses pelatihan bersifat deterministik dan hasilnya bisa direproduksi secara konsisten di setiap eksekusi ulang.
-  Hasil akurasi model SVM adalah 89.47%
+---
 
-### 3. Algoritma Random Forest
+### 2. Algoritma Random Forest
 
-Random Forest adalah algoritma ensemble learning yang digunakan untuk klasifikasi dan regresi. Algoritma ini menggabungkan banyak pohon keputusan (decision trees) secara bersamaan untuk membuat prediksi yang lebih akurat dan stabil dibandingkan menggunakan satu pohon saja. Dalam model ini, parameter yang digunakan adalah:
+Random Forest adalah algoritma ensemble learning yang menggabungkan banyak pohon keputusan untuk meningkatkan akurasi dan mengurangi overfitting. Model menggunakan agregasi voting dari hasil banyak pohon untuk prediksi klasifikasi.
 
-- n_estimators=100: artinya akan membangun sebanyak 100 pohon dalam proses pelatihan. Semakin banyak jumlah pohon, biasanya model menjadi lebih akurat dan stabil karena hasil akhir merupakan agregasi dari banyak pohon, namun waktu pelatihan juga akan lebih lama.
-- Parameter criterion="entropy" menunjukkan bahwa pemisahan data di setiap simpul pohon akan didasarkan pada nilai information gain, yang berasal dari teori informasi. Entropy digunakan untuk mengukur ketidakpastian, dan model akan berusaha meminimalkan ketidakpastian ini di setiap split data. Meskipun proses ini sedikit lebih lambat dibandingkan dengan kriteria lain seperti Gini, pemilihan entropy sering kali memberikan hasil prediksi yang lebih baik dalam kasus tertentu.
-- max_depth=10: Menentukan kedalaman maksimum setiap pohon dalam hutan. ini diterapkan untuk mencegah overfitting, yaitu kondisi ketika model terlalu menyesuaikan diri terhadap data pelatihan dan tidak mampu menggeneralisasi dengan baik terhadap data baru. Dengan membatasi kedalaman, model hanya boleh membelah data hingga 10 tingkat saja, sehingga pola yang dipelajari cukup dalam namun tidak terlalu kompleks.
-- random_state=50: digunakan untuk memastikan hasil pelatihan model bisa direproduksi. Dalam konteks pembelajaran mesin, penggunaan random state yang tetap akan menghasilkan hasil yang konsisten setiap kali model dijalankan, karena proses internal seperti pemilihan sampel acak akan menggunakan seed yang sama.
-- n_jobs=-1: Menentukan jumlah inti (cores) yang digunakan untuk menghitung. Jika diatur ke -1, model akan menggunakan semua inti yang tersedia, sehingga mempercepat proses pelatihan.
-  Hasil akurasi model Random Forest adalah 98.09%
+Parameter yang digunakan:
 
-### Kelebihan dan Kekurangan Setiap Algoritma
+* **n\_estimators = 100**. Jumlah pohon keputusan yang dibangun. Semakin banyak pohon, model biasanya lebih stabil dan akurat, namun membutuhkan waktu lebih lama.
+* **criterion = 'gini'**. Kriteria untuk memilih split terbaik. Gini mengukur impurity data di setiap node.
+* **max\_depth = 10**. Batas kedalaman pohon untuk menghindari overfitting.
+* **random\_state = 42**. Agar hasil pelatihan konsisten saat pengulangan.
+* **n\_jobs = -1**. Menggunakan semua core CPU untuk mempercepat pelatihan.
 
-| Algoritma                        | Kelebihan                                                                                                      | Kekurangan                                                                                       |
-| -------------------------------- | -------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
-| **Random Forest**                | - Tidak mudah overfitting<br>- Mampu menangani data non-linear dan fitur dalam jumlah besar                    | - Model kompleks dan sulit diinterpretasi<br>- Memerlukan memori dan waktu komputasi yang besar  |
-| **XGBoost Classifier**           | - Akurasi tinggi<br>- Mendukung regularisasi untuk mengurangi overfitting<br>- Cocok untuk data tidak seimbang | - Proses training lebih lama<br>- Membutuhkan tuning hyperparameter yang cukup kompleks          |
-| **Support Vector Machine (SVM)** | - Efektif untuk data high-dimensional<br>- Cocok untuk dataset kecil dengan margin antar kelas yang jelas      | - Kurang efisien pada dataset besar<br>- Pemilihan kernel dan parameter cukup sulit dan sensitif |
+Hasil akurasi model Random Forest adalah **71%**.
 
+---
+
+### 3. Algoritma K-Nearest Neighbors (KNN)
+
+KNN adalah algoritma berbasis instance yang mengklasifikasikan data baru berdasarkan mayoritas label dari k tetangga terdekatnya di ruang fitur.
+
+Parameter yang digunakan:
+
+* **n\_neighbors = 5**. Jumlah tetangga terdekat yang dipertimbangkan saat klasifikasi.
+* **weights = 'uniform'**. Semua tetangga dianggap memiliki bobot yang sama saat voting.
+* **metric = 'minkowski'**. Metode pengukuran jarak, dengan p=2 setara dengan jarak Euclidean.
+* **algorithm = 'auto'**. Memilih algoritma pencarian tetangga terbaik secara otomatis.
+
+Hasil akurasi model KNN adalah **65%**.
+
+---
+
+### 4. Algoritma Support Vector Machine (SVM)
+
+Support Vector Machine adalah algoritma yang mencari hyperplane optimal untuk memisahkan kelas dengan margin terbesar, mampu menangani kasus linear maupun non-linear menggunakan kernel.
+
+Parameter yang digunakan:
+
+* **kernel = 'rbf'**. Radial Basis Function kernel untuk batas pemisah non-linear yang fleksibel.
+* **C = 1.0**. Parameter regularisasi yang mengontrol trade-off antara margin besar dan klasifikasi benar pada training data.
+* **gamma = 'scale'**. Parameter kernel yang mengatur jangkauan pengaruh titik data.
+* **random\_state = 42**. Menjamin hasil pelatihan yang dapat direproduksi.
+
+Hasil akurasi model SVM adalah **63%**.
+
+---
+
+### 5. Algoritma Decision Tree
+
+Decision Tree adalah model berbasis pohon yang membuat keputusan berdasarkan fitur dengan membagi data di setiap node untuk mencapai klasifikasi yang akurat.
+
+Parameter yang digunakan:
+
+* **criterion = 'gini'**. Kriteria untuk memilih split terbaik.
+* **max\_depth = 5**. Membatasi kedalaman pohon agar tidak overfitting.
+* **random\_state = 0**. Untuk memastikan hasil yang konsisten.
+
+Hasil akurasi model Decision Tree adalah **53%**.
+
+---
+
+### 6. Algoritma Gradient Boosting
+
+Gradient Boosting adalah algoritma ensemble yang membangun model secara bertahap dengan mengoptimalkan residual dari model sebelumnya menggunakan metode gradient descent.
+
+Parameter yang digunakan:
+
+* **n\_estimators = 100**. Jumlah pohon yang dibuat secara bertahap.
+* **learning\_rate = 0.1**. Kecepatan pembelajaran model, semakin kecil semakin lambat pembelajaran tapi biasanya lebih stabil.
+* **max\_depth = 3**. Batas kedalaman pohon untuk menghindari overfitting.
+* **random\_state = 42**. Menjamin konsistensi hasil pelatihan.
+
+Hasil akurasi model Gradient Boosting adalah **71%**.
+
+---
+
+### 7. Algoritma AdaBoost
+
+AdaBoost (Adaptive Boosting) adalah algoritma ensemble yang menggabungkan banyak model sederhana (biasanya pohon keputusan kecil) dengan memberikan bobot lebih pada data yang sulit diklasifikasikan.
+
+Parameter yang digunakan:
+
+* **n\_estimators = 50**. Jumlah model dasar yang digabungkan.
+* **learning\_rate = 1.0**. Mengatur kontribusi masing-masing model.
+* **random\_state = 42**. Agar hasil pelatihan konsisten.
+
+Hasil akurasi model AdaBoost adalah **67%**.
+
+---
+
+### 8. Algoritma Naive Bayes
+
+Naive Bayes adalah algoritma probabilistik yang menggunakan teorema Bayes dengan asumsi independensi antar fitur untuk melakukan klasifikasi.
+
+Parameter yang digunakan:
+
+* **variasi model tergantung jenis Naive Bayes, misalnya GaussianNB untuk data kontinu**.
+* Algoritma ini tidak memiliki banyak parameter untuk diatur, hanya mempelajari probabilitas dari data training.
+
+Hasil akurasi model Naive Bayes adalah **69%**.
+
+---
 ### Pemilihan Model Terbaik
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/1d03c797-380b-45b9-baf9-a1bf6a0cb3ca" width="600"/>
+  <img src="https://github.com/user-attachments/assets/54011bed-f248-47ce-8a43-2467e54688e4" width="600"/>
 </p>
-Berdasarkan tabel nilai akurasi setiap model, model yang dipilih sebagai solusi adalah XGBoost, karena model ini memiliki nilai akurasi tertinggi. XGBoost juga dipilih karena memiliki kemampuan yang baik dalam menangani overfitting melalui mekanisme regularisasi (L1 dan L2), serta dikenal efisien dan cepat dalam proses pelatihan, terutama untuk dataset yang besar dan kompleks. Selain itu, XGBoost mampu menangani nilai yang hilang secara otomatis dan sangat efektif dalam mempelajari hubungan non-linear dalam data.
+
+**📌 Insight:**
+Model Gradient Boosting mampu mengklasifikasikan pasien dengan akurasi sekitar 71%, menunjukkan performa yang layak untuk digunakan dalam prediksi risiko awal.
+
+Model ini mengungguli metode klasik seperti Logistic Regression dan Decision Tree, berkat kemampuannya menangkap kompleksitas interaksi antar variabel.
 
 ## Evaluation
 
-Dalam proyek ini, evaluasi model dilakukan dengan menggunakan confusion matrix, akurasi, dan f1 score sebagai metrik penilaian untuk setiap model. Sebelum itu, akan dijelaskan terlebih dahulu cara menghitung akurasi dan f1 score serta cara memanfaatkan confusion matrix.
-
-### Penjelasan Confusion Matrix:
-
-Confusion matrix adalah sebuah tabel yang digunakan untuk menggambarkan performa model klasifikasi, khususnya dalam kasus klasifikasi biner maupun multi-kelas. Tabel ini memperlihatkan perbandingan antara hasil prediksi model dengan label sebenarnya.
-
+### 1. Logistic Regression
+Model linear yang digunakan untuk klasifikasi biner. Logistic Regression memodelkan probabilitas kejadian menggunakan fungsi sigmoid, dan cocok untuk memprediksi apakah seseorang terkena penyakit kardiovaskular (1) atau tidak (0).
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/cae06f2c-285d-44aa-9e31-8d4db42b37c1" width="1000"/>
+  <img src="https://github.com/user-attachments/assets/de2ee7ba-72f3-484a-9a1d-64c2076003fd" width="1000"/>
+</p>
+Insight :
+
+True Positives (TP): 6243 — model berhasil mengenali pasien yang memang terkena penyakit kardiovaskular.
+
+True Negatives (TN): 3018 — model dengan benar mengenali pasien yang tidak terkena penyakit.
+
+False Positives (FP): 3752 — pasien yang sebenarnya tidak terkena, tapi dikira terkena oleh model (bisa menyebabkan kecemasan atau tes lanjutan yang tidak perlu).
+
+False Negatives (FN): 767 — paling krusial, karena pasien yang sebenarnya terkena tidak dikenali oleh model → ini bisa berbahaya dan fatal karena tidak mendapat penanganan tepat waktu.
+
+
+### 2. Random Forest
+Algoritma ensemble yang terdiri dari banyak decision tree. Model ini menggabungkan prediksi dari setiap pohon menggunakan voting mayoritas untuk menghasilkan prediksi akhir. Random Forest efektif menangani data dengan banyak fitur dan interaksi kompleks.
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/92a82e07-a5d4-4e98-8df8-4246c82c50ff" width="1000"/>
+</p>
+Insight :
+
+True Positives (TP): 6001
+Model berhasil mengenali pasien yang memang terkena penyakit kardiovaskular.
+
+True Negatives (TN): 3823
+Model dengan benar mengenali pasien yang tidak terkena penyakit.
+
+False Positives (FP): 2947
+Pasien yang sebenarnya tidak terkena, tapi diklasifikasikan sebagai terkena oleh model. Ini bisa menyebabkan kecemasan atau pemeriksaan medis yang tidak perlu.
+
+False Negatives (FN): 1009
+Pasien yang sebenarnya terkena tetapi tidak dikenali oleh model. Ini adalah kesalahan paling krusial karena pasien tersebut bisa tidak mendapat penanganan yang tepat waktu.
+
+### 3. K-Nearest Neighbors (K-NN)
+Model berbasis instance-based learning yang memprediksi kelas berdasarkan mayoritas tetangga terdekat dari titik data baru. K-NN sensitif terhadap skala data, sehingga standarisasi sangat penting sebelum pelatihan.
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/1e2007d5-998d-467e-8680-68b358ccfdec" width="1000"/>
+</p>
+Insight :
+
+True Positives (TP): 4734
+Model berhasil mengenali pasien yang memang terkena penyakit kardiovaskular.
+
+True Negatives (TN): 4267
+Model dengan benar mengenali pasien yang tidak terkena penyakit.
+
+False Positives (FP): 2503
+Pasien yang sebenarnya tidak terkena, tapi diklasifikasikan sebagai terkena oleh model. Hal ini dapat menimbulkan kecemasan dan pemeriksaan medis yang tidak diperlukan.
+
+False Negatives (FN): 2276
+Pasien yang sebenarnya terkena tetapi tidak dikenali oleh model. Ini sangat berisiko karena dapat menyebabkan pasien tidak mendapatkan pengobatan yang semestinya.
+
+### 4. Support Vector Machine (SVM)
+Model klasifikasi yang mencari hyperplane optimal untuk memisahkan dua kelas data. SVM sangat efektif untuk dataset berdimensi tinggi dan bekerja dengan kernel untuk menangani data non-linear.
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/f8e5e026-db50-416f-b20e-349fb846c55b" width="1000"/>
+</p>
+Insight :
+
+True Positives (TP): 5214
+Model berhasil mengidentifikasi pasien yang memang terkena penyakit kardiovaskular.
+
+True Negatives (TN): 3543
+Model mengenali pasien yang tidak terkena penyakit secara benar.
+
+False Positives (FP): 3227
+Pasien yang sebenarnya tidak terkena penyakit namun diklasifikasikan terkena oleh model. Ini bisa menyebabkan pemeriksaan medis tidak perlu.
+
+False Negatives (FN): 1796
+Kasus yang seharusnya terdeteksi sebagai terkena namun tidak terdeteksi. Ini sangat berisiko karena bisa mengakibatkan tidak diberikannya penanganan medis yang diperlukan.
+
+### 5. Decision Tree
+Algoritma berbasis pohon yang membagi dataset berdasarkan fitur yang paling memisahkan kelas target. Mudah dipahami dan diinterpretasikan, namun rawan overfitting jika tidak dikontrol.
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/df697584-c2d7-4eee-a635-f08d04db006d" width="1000"/>
 </p>
 
-**Penjelasan masing-masing istilah:**
+True Positives (TP): 3785
+Kasus benar yang berhasil dikenali sebagai terkena penyakit kardiovaskular.
 
-- True Positive (TP): Jumlah data yang benar-benar positif dan diprediksi sebagai positif.
-- False Positive (FP): Jumlah data yang sebenarnya negatif tetapi diprediksi sebagai positif (disebut juga Type I Error).
-- True Negative (TN): Jumlah data yang benar-benar negatif dan diprediksi sebagai negatif.
-- False Negative (FN): Jumlah data yang sebenarnya positif tetapi diprediksi sebagai negatif (Type II Error).
+True Negatives (TN): 3601
+Kasus benar yang dikenali sebagai tidak terkena.
 
-**Dari confusion matrix, dapat dihitung metrik evaluasi:**
+False Positives (FP): 3169
+Kasus yang sebenarnya sehat namun diklasifikasi terkena.
 
-- Akurasi = (TP + TN) / (TP + TN + FP + FN)
-  → Mengukur seberapa banyak prediksi yang benar dibandingkan total prediksi.
-- Precision = TP / (TP + FP)
-  → Mengukur seberapa akurat model saat memprediksi kelas positif.
-- Recall = TP / (TP + FN)
-  → Mengukur kemampuan model dalam menemukan semua data positif.
-- F1 Score = 2 × (Precision × Recall) / (Precision + Recall)
-  → Rata-rata harmonis antara precision dan recall, berguna saat distribusi kelas tidak seimbang.
+False Negatives (FN): 3225
+Kasus yang sebenarnya terkena penyakit namun diklasifikasi sebagai tidak terkena — ini cukup berisiko.
 
-**Contoh penerapan:**
 
-### 1. Algoritma XGBoost
-
+### 6. Gradient Boosting
+Model ensemble yang membangun pohon keputusan secara bertahap, memperbaiki kesalahan dari model sebelumnya. Gradient Boosting sangat kuat dan sering digunakan dalam kompetisi karena kemampuannya menangani kompleksitas data.
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/c22ceb33-a882-4de4-ab66-c8e663e5c7e3" width="1000"/>
+  <img src="https://github.com/user-attachments/assets/01b23ef5-6f3a-4d94-80d0-bc4bbf279488" width="1000"/>
 </p>
+Insight :
 
-Menggunakan XGBoost dimaknai:
+True Positives (TP): 6147
+Kasus yang benar dikenali sebagai terkena penyakit kardiovaskular.
 
-- 59 responden dengan kondisi Insufficient Weight telah diklasifikasikan dengan benar.
-- 38 responden dengan kondisi Normal Weight telah diklasifikasikan dengan benar.
-- 68 responden dengan kondisi Obesity Type I telah diklasifikasikan dengan benar, sementara 4 responden Obesity Type I diklasifikasikan salah sebagai Obesity Type II.
-- 59 responden dengan kondisi Obesity Type II telah diklasifikasikan dengan benar.
-- 80 responden dengan kondisi Obesity Type III telah diklasifikasikan dengan benar.
-- 45 responden dengan kondisi Overweight Level I telah diklasifikasikan dengan benar.
-- 64 responden dengan kondisi Overweight Level II telah diklasifikasikan dengan benar, namun ada 1 responden Overweight Level II yang salah diklasifikasikan sebagai Normal Weight.
+True Negatives (TN): 3684
+Kasus yang benar dikenali sebagai tidak terkena.
 
-### 2. Algoritma SVM
+False Positives (FP): 3086
+Kasus sehat yang diklasifikasikan sebagai terkena.
 
+False Negatives (FN): 863
+Kasus yang terkena namun tidak dikenali — jumlah ini jauh lebih sedikit dibanding model lain.
+
+### 7. AdaBoost
+Algoritma boosting lain yang menggabungkan beberapa weak learner (biasanya decision stump) secara iteratif. Fokus pada kesalahan sebelumnya dengan menyesuaikan bobot data yang salah klasifikasi.
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/e8a92b68-bf70-4deb-bfad-89c991748a54" width="1000"/>
+  <img src="https://github.com/user-attachments/assets/d48d048e-2394-433c-af6a-4ad0c3bf6155" width="1000"/>
 </p>
+Insight :
 
-Menggunakan SVM dimaknai:
+True Positives (TP): 6422 – kasus sakit yang berhasil dikenali.
 
-1. 58 responden dengan kondisi Insufficient Weight telah diklasifikasikan dengan benar, sementara 1 responden salah diklasifikasikan sebagai Normal Weight.
-2. 22 responden dengan kondisi Normal Weight telah diklasifikasikan dengan benar, namun:
+False Negatives (FN): 588 – kasus sakit yang tidak terdeteksi (relatif rendah).
 
-- 5 responden salah diklasifikasikan sebagai Insufficient Weight.
-- 11 responden salah diklasifikasikan sebagai Overweight Level I.
+True Negatives (TN): 2896 – kasus sehat yang dikenali dengan benar.
 
-3. 65 responden dengan kondisi Obesity Type I telah diklasifikasikan dengan benar, sementara:
+False Positives (FP): 3874 – kasus sehat yang salah dikenali sebagai sakit.
 
-- 4 responden salah diklasifikasikan sebagai Obesity Type II.
-- 3 responden salah diklasifikasikan sebagai Overweight Level II.
-
-4. 59 responden dengan kondisi Obesity Type II telah diklasifikasikan dengan benar.
-5. 75 responden dengan kondisi Obesity Type III telah diklasifikasikan dengan benar, sementara 5 responden salah diklasifikasikan sebagai Obesity Type II.
-6. 41 responden dengan kondisi Overweight Level I telah diklasifikasikan dengan benar, namun 4 responden salah diklasifikasikan sebagai Overweight Level II.
-7. 54 responden dengan kondisi Overweight Level II telah diklasifikasikan dengan benar, namun:
-
-- 2 responden salah diklasifikasikan sebagai Obesity Type I.
-- 9 responden salah diklasifikasikan sebagai Overweight Level I.
-
-### 3. Algoritma Random Forest
-
+### 8. Naive Bayes
+Model probabilistik berdasarkan Teorema Bayes yang mengasumsikan independensi antar fitur. Cocok untuk klasifikasi cepat dan bekerja baik pada data yang relatif sederhana.
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/398bec10-6e8c-440e-99aa-eac4261b2019" width="1000"/>
+  <img src="https://github.com/user-attachments/assets/2d7f1463-8637-4852-b380-026e61f7a310" width="1000"/>
 </p>
+Insight :
 
-Menggunakan Random Forest dimaknai:
+True Positives (TP): 5569 – kasus sakit terdeteksi benar.
 
-- 38 responden dengan kondisi Normal Weight telah diklasifikasikan dengan benar.
-- 42 responden dengan kondisi Overweight Level I telah diklasifikasikan dengan benar, namun 2 responden salah diklasifikasikan sebagai Normal Weight, dan 1 responden sebagai Overweight Level II.
-- 62 responden dengan kondisi Overweight Level II telah diklasifikasikan dengan benar, sementara 1 responden salah diklasifikasikan sebagai Normal Weight, dan 2 responden sebagai Overweight Level I.
-- 71 responden dengan kondisi Obesity Type I telah diklasifikasikan dengan benar, sementara 1 responden salah diklasifikasikan sebagai Insufficient Weight.
-- 58 responden dengan kondisi Insufficient Weight telah diklasifikasikan dengan benar, sementara 1 responden salah diklasifikasikan sebagai Normal Weight.
-- 59 responden dengan kondisi Obesity Type II telah diklasifikasikan dengan benar.
-- 80 responden dengan kondisi Obesity Type III telah diklasifikasikan dengan benar.
+False Negatives (FN): 1441 – kasus sakit tidak terdeteksi.
+
+True Negatives (TN): 3929 – kasus sehat dikenali dengan benar.
+
+False Positives (FP): 2841 – kasus sehat yang salah dideteksi sebagai sakit.
+
+
 
 ## Kesimpulan
 
-### 1. Mengetahui faktor apa saja yang paling berpengaruh terhadap tingkat obesitas seseorang
+### 1. Mengetahui seberapa akurat model machine learning dalam memprediksi risiko penyakit kardiovaskular berdasarkan variabel-variabel kesehatan seperti tekanan darah, kadar kolesterol, kadar glukosa, serta faktor gaya hidup.
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/d292fdb0-77f6-40fb-85bd-61a29c94741c" width="600"/>
+  <img src="https://github.com/user-attachments/assets/f2d70b37-2f63-4288-b878-243642a29b7c" width="600"/>
 </p>
-Berdasarkan grafik di atas, 3 faktor yang paling memengaruhi level obesitas seseorang adalah BMI, seorang perempuan, dan sering mengonsumsi makanan tinggi kalori (FAVC)
 
-### 2. Mengetahui cara memanfaatkan informasi pola hidup guna memprediksi kategori diabetes pada seseorang
+**Hasil Prediksi:**
 
-Untuk melakukan prediksi, digunakan model dengan akurasi terbaik yaitu XGBoost, lalu melakukan inference dengan input data baru, menggunakan fungsi di bawah ini menggunakan parameter model dan label_encoder.
+✅ Prediksi: ⚠️ Terkena Cardiovascular
+
+✅ Probabilitas: 75%
+
+**📌 Insight:**
+
+- Meskipun tekanan darah dan glukosa terlihat normal, tinggi badan dan berat badan menyebabkan BMI yang sedikit di atas normal, serta kolesterol di atas normal (2) dapat menjadi faktor risiko yang signifikan.
+
+- Model mengidentifikasi pasien ini sebagai berisiko tinggi terkena penyakit kardiovaskular, dengan keyakinan cukup tinggi (84%), mengindikasikan model sensitif terhadap fitur-fitur kesehatan utama seperti kolesterol dan BMI.
+
+
+### 2. Mengetahui apakah jenis kelamin dan kelompok usia tertentu memiliki risiko lebih tinggi terhadap penyakit kardiovaskular
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/fec424f5-031d-4923-a417-8fc07b10a825" width="600"/>
+  <img src="https://github.com/user-attachments/assets/ae2c2bdd-f66d-4218-81ce-c10e1c7c2b1a" width="600"/>
 </p>
 
-Selanjutnya, memanggil fungsi tersebut dengan mengisi parameter model_xgb, le.
+**📊 Interpretasi dari Grafik**
 
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/bd0e969e-47b6-4f55-95b6-c4546f211a74" width="600"/>
-</p>
+- Kedua jenis kelamin memiliki pola yang mirip: risiko meningkat seiring bertambahnya usia.
 
-Berdasarkan data yang diinput oleh pengguna berusia 21 tahun dengan tinggi badan 1,5 meter dan berat 68 kg, diketahui bahwa pola makan sehari-harinya kurang seimbang — jarang mengonsumsi sayur (skor 1 dari 3), makan tiga kali sehari, dan mengonsumsi sekitar 2 liter air setiap hari. Aktivitas fisik tergolong rendah dengan olahraga hanya 2 jam per minggu dan waktu layar 1 jam per hari. Pengguna sering mengonsumsi makanan tinggi kalori, tidak menghitung asupan kalori, dan tidak merokok. Terdapat riwayat keluarga mengalami kelebihan berat badan, dan pengguna adalah perempuan. Tidak ada konsumsi alkohol, tidak memiliki kebiasaan ngemil di antara waktu makan, serta menggunakan motor sebagai alat transportasi utama. Berdasarkan informasi tersebut, model memprediksi bahwa individu ini masuk dalam kategori Obesitas Tipe 1.
+- Pria usia 60-69 memiliki proporsi tertinggi terkena penyakit kardiovaskular (~68%).
 
-### 3. Mengetahui hubungan bagaimana riwayat obesitas dari keluarga memengaruhi level diabetes seseorang
+- Wanita usia 60-69 juga sangat tinggi (~64%), sedikit lebih rendah dari pria.
 
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/5178d4fa-b1e6-4752-b674-c0c760c7b77d" width="600"/>
-</p>
-Berdasarkan analisis di atas, dapat dikeathui bahwa individu dengan riwayat obesitas keluarga memiliki kemungkinan jauh lebih besar untuk mengalami obesitas sedang hingga berat dibandingkan individu tanpa riwayat tersebut.
+- Kelompok usia di bawah 40 memiliki proporsi risiko yang jauh lebih rendah (< 25%) untuk kedua gender.
 
-## Refrensi
+**Kesimpulan**
 
-1. Suha, G. R., & Rosyada, A. (2022). Faktor-faktor yang berhubungan dengan kejadian obesitas pada remaja umur 13–15 tahun di Indonesia (analisis lanjut data Riskesdas 2018). Ilmu Gizi Indonesia, 6(1), 43.
-2. Batara, A. S. (2018). Healthy Setting Ruang Publik Perkotaan: Sebuah Konsep Terminal Sehat. CV. Social Politic Genius (SIGn).
-3. Rahmani, A., & Nadhiroh, S. R. (2024). Upaya yang Dilakukan Beberapa Negara ASEAN untuk Mengatasi Obesitas Anak dan Remaja dalam Program Berbasis Sekolah: Tinjauan Sistematis. Amerta Nutrition, 8(1), 151-160.
-4. Pratama, B. A. (2023). Literature Review: Faktor risiko obesitas pada remaja di indonesia. Indonesian Journal on Medical Science, 10(2).
+- Risiko meningkat secara signifikan setelah usia 40 tahun, paling tinggi di kelompok 60-69 tahun.
+
+- Pria memiliki sedikit risiko lebih tinggi dibanding wanita pada semua kelompok usia.
